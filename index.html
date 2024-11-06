@@ -2,123 +2,89 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title> - ToDoアプリ</title>
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css'>
-<link rel='stylesheet' href='https://unpkg.com/@mdi/font@6.x/css/materialdesignicons.min.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900'>
+  <title>udemy1</title>
+  
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<!-- Vueで指定された"app"要素、この中でのみVueが有効 -->
+</form><!-- Vueで指定された"app"要素、この中でのみVueが有効 -->
+<head>
+  <style>
+    .active{
+      border:1px solid red;
+    }
+    .text-danger{
+      color: red;
+    }
+  </style>
+</head>
+<div style="color:blue; font-size:20px">styleテスト</dv>
+<div class="active text-danger">classテスト</div>
+<button id="clickEvent" onClick="btnClicked()">クリックしてね</button>
+<form>
+  <button type="submit">送信</button>
+</form>
 <div id="app">
-  <v-app>
-    <v-content>
-      <v-container>
-        <v-row
-          class="text-h3 mb-3 mt-3"
-          justify="center"
-          >
-          My ToDo App
-        </v-row>
-        <v-row
-          class="mb-3 mt-3"
-          align="center"
-          justify="center"
-          >
-          <v-col 
-            cols="6"            
-            >
-            <v-text-field
-                  class="ml-6 mr-6"
-                  v-model:value="task"                         
-                  label="タスクを入力"
-                  placeholder="タスクを入力…"
-                  filled
-            >
-          </v-col>
-        </v-row>
-        <v-row
-          class="mb-3 mt-3"
-          align="center"
-          justify="center"
-          >
-          タスク内容：{{ task }}
-          <v-btn v-on:click="addTask"
-               fab
-               white
-               middle               
-               color="red"
-               >
-                 <v-icon dark>
-                   mdi-plus
-                 </v-icon>
-               </v-btn>
-        </v-row>
-        <v-row
-          class="mb-3 mt-3"
-          justify="center"
-          > 
-          <v-btn v-on:click="clearAll"
-                 
-                 rounded
-                 >全てのToDoをクリア</v-btn>
-        </v-row>
-        <v-row 
-          class="mb-3 mt-3"
-          justify="center"
-          v-for="todo in todoList">
-          {{ todo }}
-        </v-row>
-        <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
-        >
-          <v-text-field
-            label="名前"
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
-        >
-          <v-text-field
-            label="日付"
-            placeholder="xxxx年xx月xx日"
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
-        >
-          <v-text-field
-            label="備考"
-            solo
-          ></v-text-field>
-        </v-col>
-              <v-row>
-        <v-col
-          cols="12"
-          sm="6"
-          md="3"
-        >
-          <v-text-field
-            label="住所"
-            prepend-icon="mdi-map-marker"
-          ></v-text-field>
-      </v-container>
-    </v-content>
-  </v-app>
+  <button @click="btnClicked">クリックしてね</button>
+  <div :style="{fontSize:fontSize}">Styleテスト</div>
+  <div :class="{active:isActive}">classのテスト</div>
+  <div v-show="isDisplay">表示</div>
+  <div v-show="!isDisplay">falseになってます</div>
+  <div v-if="isDisplay">ifで表示</div>
+  <div v-if="signal === 'red'">赤</div>
+  <div v-else-if="signal === 'yellow'">黄</div>
+  <div v-else-if="signal === 'blue'">青</div>
+  <div v-else>赤青黄ではありません</div>
+  <ul>
+    <li v-for="member in members">
+      {{ member }}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="(member,index) in members">
+      {{ index }} : {{ member }}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="value in book">
+      {{ value }}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="(value,key) in book">
+      {{ value }} : {{ key }}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="(value,key,index) in book">
+      {{ value }} : {{ key }} : {{ index }} 
+    </li>
+  </ul>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>著者名</th>
+        <th>url</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="book in books" :key="book.id">
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.url }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div v-text="test"></div>
+  <div v-html="test"></div>
 </div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js'></script><script  src="./script.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script><script  src="./script.js"></script>
 
 </body>
 </html>
